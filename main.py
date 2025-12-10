@@ -67,9 +67,9 @@ lives = 6
 for letter in range(0, len(chosen_word)):
     placeholder.append("_")
 
+print("Hint: An animal")
 print("".join(placeholder))
 
-# fix issue where even when the whole word is solved it loops one last time before showing "You Won!"
 while True:
     if "_" not in placeholder:
         print("==========")
@@ -78,6 +78,7 @@ while True:
         break 
 
     guess = input("\nGuess a letter: ").lower()
+    print(lives)
 
     if lives == 0:
         print(stages[0])
@@ -87,8 +88,8 @@ while True:
         break
 
     if guess not in chosen_word:
-        print(stages[lives])
         lives -= 1
+        print(stages[lives])
 
     for index, letter in enumerate(chosen_word):
         if guess == letter:
