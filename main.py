@@ -57,10 +57,9 @@ stages = [r'''
 =========
 ''']
 
-word_list = ["aardvark", "baboon", "camel"]
+word_list = ["aardvark", "baboon", "camel", "whale", "capybara"]
 
 chosen_word = random.choice(word_list)
-print(chosen_word)
 
 placeholder = []
 lives = 6
@@ -68,8 +67,10 @@ lives = 6
 for letter in range(0, len(chosen_word)):
     placeholder.append("_")
 
+print("".join(placeholder))
+
 while True:
-    guess = input("Guess a letter: ").lower()
+    guess = input("\nGuess a letter: ").lower()
 
     if "".join(placeholder) == chosen_word:
         print("==========")
@@ -93,11 +94,3 @@ while True:
             placeholder[index] = letter
             
     print("".join(placeholder))
-    print(chosen_word)
-
-
-# TODO-2:
-# If guess is not a letter in the chosen_word, Then reduce lives by 1.
-# If lives goes down to 0 then the game should end, and it should print "You lose."
-# TODO-3:
-# print the ASCII art from the list stages that corresponds to the current number of lives the user has remaining.
