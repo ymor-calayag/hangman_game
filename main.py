@@ -1,4 +1,5 @@
 import random
+import hangman_words
 
 stages = [r'''
   +---+
@@ -57,7 +58,7 @@ stages = [r'''
 =========
 ''']
 
-word_list = ["aardvark", "baboon", "camel", "whale", "capybara"]
+word_list = hangman_words.word_list
 
 chosen_word = random.choice(word_list)
 
@@ -67,7 +68,6 @@ lives = 6
 for letter in range(0, len(chosen_word)):
     placeholder.append("_")
 
-print("Hint: An animal")
 print("".join(placeholder))
 
 while True:
@@ -77,15 +77,14 @@ while True:
         print("==========")
         break 
 
-    guess = input("\nGuess a letter: ").lower()
-    print(lives)
-
     if lives == 0:
         print(stages[0])
         print("==========")
         print("You Lose!")
         print("==========")
         break
+
+    guess = input("\nGuess a letter: ").lower()
 
     if guess not in chosen_word:
         lives -= 1
