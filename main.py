@@ -69,14 +69,15 @@ for letter in range(0, len(chosen_word)):
 
 print("".join(placeholder))
 
+# fix issue where even when the whole word is solved it loops one last time before showing "You Won!"
 while True:
-    guess = input("\nGuess a letter: ").lower()
-
-    if "".join(placeholder) == chosen_word:
+    if "_" not in placeholder:
         print("==========")
         print("You Won!")
         print("==========")
         break 
+
+    guess = input("\nGuess a letter: ").lower()
 
     if lives == 0:
         print(stages[0])
